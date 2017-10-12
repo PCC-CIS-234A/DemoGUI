@@ -34,9 +34,9 @@ public class Main {
         mFrame.setVisible(true);
     }
 
-    public static void showUserTakingTest() {
+    public static void showStub() {
         mFrame.getContentPane().removeAll();
-        mFrame.getContentPane().add(new UserTakingTestForm().getRootPanel());
+        mFrame.getContentPane().add(new StubForm().getRootPanel());
         mFrame.pack();
         mFrame.setLocationRelativeTo(null);
         mFrame.setVisible(true);
@@ -51,7 +51,7 @@ public class Main {
     }
 
     public static void login() {
-        showUserTakingTest();
+        showStub();
     }
 
     public static void main(String[] args) {

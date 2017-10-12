@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 /**
  * Created by SYTC307u8365 on 10/10/2017.
  */
-public class UserTakingTestForm {
+public class StubForm {
     private JButton startOverButton;
     private JPanel rootPanel;
 
@@ -14,7 +14,7 @@ public class UserTakingTestForm {
         return rootPanel;
     }
 
-    public UserTakingTestForm() {
+    public StubForm() {
 
 
         startOverButton.addActionListener(new ActionListener() {
