@@ -21,16 +21,14 @@ public class RegisterForm {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 // some logic to verify that the user is the legitimate user.
-                Main.setEmail(emailTextField.getText());
-                Main.setPassword(passwordTextField.getText());
+                Main.setUser(new User(-1, emailTextField.getText(), passwordTextField.getText(), ""));
                 Main.login();
             }
         });
         loginExistingButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                Main.setEmail(emailTextField.getText());
-                Main.setPassword(passwordTextField.getText());
+                Main.setUser(new User(-1, emailTextField.getText(), passwordTextField.getText(), ""));
                 Main.showLogin();
             }
         });

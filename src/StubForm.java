@@ -20,8 +20,7 @@ public class StubForm {
         startOverButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                Main.setEmail("");
-                Main.setPassword("");
+                Main.setUser(new User(-1, "", "", ""));
                 Main.showLogin();
             }
         });

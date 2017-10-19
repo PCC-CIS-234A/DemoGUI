@@ -8,9 +8,8 @@ import static javax.swing.SwingUtilities.invokeLater;
 // import javax.swing.*;
 
 public class Main {
+    private static User mUser = new User(-1, "", "", "");
     private static JFrame mFrame = null;
-    private static String mEmail = "";
-    private static String mPassword = "";
 
     public static void createGUI() {
         mFrame = new JFrame();
@@ -20,7 +19,7 @@ public class Main {
 
     public static void showLogin() {
         mFrame.getContentPane().removeAll();
-        mFrame.getContentPane().add(new LoginForm(mEmail, mPassword).getRootPanel());
+        mFrame.getContentPane().add(new LoginForm(mUser.getEmail(), mUser.getPassword()).getRootPanel());
         mFrame.pack();
         mFrame.setLocationRelativeTo(null);
         mFrame.setVisible(true);
@@ -28,7 +27,7 @@ public class Main {
 
     public static void showRegister() {
         mFrame.getContentPane().removeAll();
-        mFrame.getContentPane().add(new RegisterForm(mEmail, mPassword).getRootPanel());
+        mFrame.getContentPane().add(new RegisterForm(mUser.getEmail(), mUser.getPassword()).getRootPanel());
         mFrame.pack();
         mFrame.setLocationRelativeTo(null);
         mFrame.setVisible(true);
@@ -42,12 +41,8 @@ public class Main {
         mFrame.setVisible(true);
     }
 
-    public static void setEmail(String email) {
-        mEmail = email;
-    }
-
-    public static void setPassword(String password) {
-        mPassword = password;
+    public static void setUser(User user) {
+        mUser = user;
     }
 
     public static void login() {
