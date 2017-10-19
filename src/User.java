@@ -44,14 +44,15 @@ public class User {
         /// validate password and email
         Database db = new Database();
         User user = db.lookupUser(email);
-        db.close();
 
         if(user != null) {
             System.out.println("User already exists! Alert goes here.");
             return null;
         }
 
-        return db.registerUser(email, password);
+        user = db.registerUser(email, password);
+        db.close();
+        return user;
     }
 
     public int getUserID() {
