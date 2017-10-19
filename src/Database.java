@@ -38,6 +38,24 @@ public class Database {
         return null;
     }
 
+    public User registerUser(String email, String password) {
+        connect();
+        String query = "INSERT INTO USERS VALUES (?, ?, '" + User.USER_ROLE + "'); SELECT SCOPE_IDENTITY() AS ID;";
+        try {
+            PreparedStatement stmt = mConnection.prepareStatement(query);
+            stmt.setString(1, email);
+            stmt.setString(2, password);
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next()) {
+                return new User(rs.getInt("ID"), email, password, User.USER_ROLE);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
     public void close() {
         if(mConnection != null) {
             System.out.println("Closing database connection.");
