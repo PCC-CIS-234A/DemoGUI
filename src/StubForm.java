@@ -22,7 +22,7 @@ public class StubForm {
             public void actionPerformed(ActionEvent actionEvent) {
                 Main.setEmail("");
                 Main.setPassword("");
-                Main.createGUI();
+                Main.showLogin();
             }
         });
     }
