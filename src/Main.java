@@ -19,7 +19,7 @@ public class Main {
 
     public static void showLogin() {
         mFrame.getContentPane().removeAll();
-        mFrame.getContentPane().add(new LoginForm(mUser.getEmail(), mUser.getPassword()).getRootPanel());
+        mFrame.getContentPane().add(new LoginForm(mUser).getRootPanel());
         mFrame.pack();
         mFrame.setLocationRelativeTo(null);
         mFrame.setVisible(true);
@@ -27,7 +27,7 @@ public class Main {
 
     public static void showRegister() {
         mFrame.getContentPane().removeAll();
-        mFrame.getContentPane().add(new RegisterForm(mUser.getEmail(), mUser.getPassword()).getRootPanel());
+        mFrame.getContentPane().add(new RegisterForm(mUser).getRootPanel());
         mFrame.pack();
         mFrame.setLocationRelativeTo(null);
         mFrame.setVisible(true);

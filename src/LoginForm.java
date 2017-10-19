@@ -12,7 +12,10 @@ public class LoginForm {
     JButton loginButton;
     JTextField passwordTextField;
 
-    LoginForm(String email, String password) {
+    LoginForm(User user) {
+        String email = user.getEmail();
+        String password = user.getPassword();
+
         emailTextField.setText(email);
         passwordTextField.setText(password);
 

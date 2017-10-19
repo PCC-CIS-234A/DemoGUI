@@ -13,7 +13,10 @@ public class RegisterForm {
     JTextField passwordTextField;
     private JPasswordField passwordConfirmField;
 
-    public RegisterForm(String email, String password) {
+    public RegisterForm(User user) {
+        String email = user.getEmail();
+        String password = user.getPassword();
+
         emailTextField.setText(email);
         passwordTextField.setText(password);
 
