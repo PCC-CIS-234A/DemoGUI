@@ -23,9 +23,18 @@ public class RegisterForm {
         registerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                User user = User.register(
+                        emailTextField.getText(),
+                        passwordTextField.getText(),
+                        passwordConfirmField.getText()
+                );
                 // some logic to verify that the user is the legitimate user.
-                Main.setUser(new User(-1, emailTextField.getText(), passwordTextField.getText(), ""));
-                Main.login();
+                if(user != null) {
+                    Main.setUser(user);
+                    System.out.println("Logged in: ID: " + user.getUserID() +
+                        ", Email: " + user.getEmail() + ", Role: " + user.getRole());
+                    Main.login();
+                }
             }
         });
         loginExistingButton.addActionListener(new ActionListener() {

@@ -4,6 +4,10 @@ public class User {
     private String mPassword;
     private String mRole;
 
+    public static final String ADMIN_ROLE = "Admin";
+    public static final String THERAPIST_ROLE = "Therapist";
+    public static final String USER_ROLE = "User";
+
     public User(int userID, String email, String password, String role) {
         mUserID = userID;
         mEmail = email;
@@ -30,6 +34,22 @@ public class User {
         } else {
             System.out.println("Password incorrect, need an error dialog.");
         }
+    }
+
+    public static User register(String email, String password, String passwordConfirm) {
+        if(!password.equals(passwordConfirm)) {
+            System.out.println("Password not equal confirm password. Alert dialog goes here.");
+            return null;
+        }
+        /// validate password and email
+        Database db = new Database();
+        User user = db.lookupUser(email);
+        if(user != null) {
+            System.out.println("User already exists! Alert goes here.");
+            return null;
+        }
+
+        return db.registerUser(email, password);
     }
 
     public int getUserID() {
