@@ -60,6 +60,13 @@ public class Database {
 
     }
 
+    /**
+     * Add methods for Test data
+     */
+    public void loadTestItems() {
+
+    }
+
     public void close() {
         if(mConnection != null) {
             System.out.println("Closing database connection.");
