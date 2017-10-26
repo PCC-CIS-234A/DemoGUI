@@ -83,11 +83,15 @@ public class Database {
     public void getUserStuff() {
 
     }
-    
+
     /**
      * Test class stuff
      */
 
+    public void getTestClassStuff() {
+
+    }
+    
     /**
      * Test Item class stuff
      */
