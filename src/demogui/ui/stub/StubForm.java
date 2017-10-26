@@ -1,3 +1,8 @@
+package demogui.ui.stub;
+
+import demogui.logic.User;
+import demogui.main.Main;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

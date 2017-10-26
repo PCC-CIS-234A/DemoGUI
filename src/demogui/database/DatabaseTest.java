@@ -1,3 +1,7 @@
+package demogui.database;
+
+import demogui.database.Database;
+import demogui.logic.User;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

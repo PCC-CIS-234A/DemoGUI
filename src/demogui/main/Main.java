@@ -1,3 +1,10 @@
+package demogui.main;
+
+import demogui.logic.User;
+import demogui.ui.login.LoginForm;
+import demogui.ui.login.RegisterForm;
+import demogui.ui.stub.StubForm;
+
 import javax.swing.*;
 
 import static javax.swing.SwingUtilities.invokeLater;

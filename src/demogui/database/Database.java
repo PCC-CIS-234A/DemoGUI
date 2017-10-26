@@ -1,3 +1,7 @@
+package demogui.database;
+
+import demogui.logic.User;
+
 import java.sql.*;
 
 public class Database {

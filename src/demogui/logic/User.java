@@ -1,3 +1,8 @@
+package demogui.logic;
+
+import demogui.database.Database;
+import demogui.main.Main;
+
 public class User {
     private int mUserID;
     private String mEmail;
@@ -6,7 +11,7 @@ public class User {
 
     public static final String ADMIN_ROLE = "Admin";
     public static final String THERAPIST_ROLE = "Therapist";
-    public static final String USER_ROLE = "User";
+    public static final String USER_ROLE = "demogui.logic.User";
 
     public User(int userID, String email, String password, String role) {
         mUserID = userID;
@@ -23,12 +28,12 @@ public class User {
         db.close();
 
         if(user == null) {
-            System.out.println("User not found, need an error dialog.");
+            System.out.println("demogui.logic.User not found, need an error dialog.");
             return;
         }
         System.out.println("ID: " + user.getUserID() + ", Email: " + user.getEmail() + ", Password: " + user.getPassword() + ", Role: " + user.getRole());
         if(user.getPassword().equals(pwd)) {
-            System.out.println("User " + user.getUserID() + " logged in successfully.");
+            System.out.println("demogui.logic.User " + user.getUserID() + " logged in successfully.");
             Main.setUser(user);
             Main.login();
         } else {
@@ -46,7 +51,7 @@ public class User {
         User user = db.lookupUser(email);
 
         if(user != null) {
-            System.out.println("User already exists! Alert goes here.");
+            System.out.println("demogui.logic.User already exists! Alert goes here.");
             return null;
         }
 

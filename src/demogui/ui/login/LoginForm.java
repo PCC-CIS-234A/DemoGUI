@@ -1,6 +1,9 @@
+package demogui.ui.login;
+
+import demogui.logic.User;
+import demogui.main.Main;
+
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * Created by SYTC307u8365 on 10/5/2017.
@@ -12,7 +15,7 @@ public class LoginForm {
     JButton loginButton;
     JTextField passwordTextField;
 
-    LoginForm(User user) {
+    public LoginForm(User user) {
         String email = user.getEmail();
         String password = user.getPassword();
 
