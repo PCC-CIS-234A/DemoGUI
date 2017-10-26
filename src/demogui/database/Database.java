@@ -76,6 +76,26 @@ public class Database {
 
     }
 
+    /**
+     * User class stuff
+     */
+
+    public void getUserStuff() {
+
+    }
+    
+    /**
+     * Test class stuff
+     */
+
+    /**
+     * Test Item class stuff
+     */
+
+    /**
+     * Test session stuff
+     */
+
     public void close() {
         if(mConnection != null) {
             System.out.println("Closing database connection.");
