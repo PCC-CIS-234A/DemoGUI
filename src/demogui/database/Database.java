@@ -92,6 +92,10 @@ public class Database {
      * Test Item class stuff
      */
 
+    public void getTestItemStuff() {
+
+    }
+
     /**
      * Test session stuff
      */
