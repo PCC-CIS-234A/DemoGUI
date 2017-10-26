@@ -60,6 +60,14 @@ public class Database {
 
     }
 
+    /**
+     * Add Test Item stuff.
+     */
+
+    public void insertTestItems() {
+
+    }
+
     public void close() {
         if(mConnection != null) {
             System.out.println("Closing database connection.");
