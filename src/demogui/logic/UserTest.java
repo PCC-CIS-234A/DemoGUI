@@ -19,7 +19,7 @@ class UserTest {
 
     @Test
     void getUserID() {
-        User u = new User(-1, "marc.goodman@pcc.edu", "test password", "Admin");
+        User u = new User(-1, "marc.goodman@pcc.edu", "test password", "Admin", null);
 
         assertEquals(u.getUserID(), -1);
     }

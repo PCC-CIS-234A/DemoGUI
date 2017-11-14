@@ -2,6 +2,12 @@ package demogui.database;
 
 import demogui.logic.User;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.*;
 
 public class Database {
@@ -26,13 +32,23 @@ public class Database {
 
     public User lookupUser(String email) {
         connect();
-        String query = "SELECT UserID, Email, Password, Role FROM USERS WHERE Email = ?";
+        String query = "SELECT UserID, Email, Password, Role, Image FROM USERS WHERE Email = ?";
         try {
             PreparedStatement stmt = mConnection.prepareStatement(query);
             stmt.setString(1, email);
             ResultSet rs = stmt.executeQuery();
             if(rs.next()) {
-                return new User(rs.getInt("UserID"), rs.getString("Email"), rs.getString("Password"), rs.getString("role"));
+                InputStream stream = rs.getBinaryStream("Image");
+                BufferedImage image = null;
+
+                try {
+                    if (stream != null)
+                        image = ImageIO.read(stream);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                return new User(rs.getInt("UserID"), rs.getString("Email"), rs.getString("Password"), rs.getString("Role"), image);
             }
             return null;
         } catch (SQLException e) {
@@ -42,16 +58,32 @@ public class Database {
         return null;
     }
 
-    public User registerUser(String email, String password) {
+    public User registerUser(String email, String password, BufferedImage image) {
         connect();
-        String query = "INSERT INTO USERS VALUES (?, ?, '" + User.USER_ROLE + "'); SELECT SCOPE_IDENTITY() AS ID;";
+        String query = "INSERT INTO USERS VALUES (?, ?, '" + User.USER_ROLE + "', ?); SELECT SCOPE_IDENTITY() AS ID;";
         try {
             PreparedStatement stmt = mConnection.prepareStatement(query);
             stmt.setString(1, email);
             stmt.setString(2, password);
+
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            InputStream inputStream = null;
+            int length = 0;
+
+            try {
+                if (image != null) {
+                    ImageIO.write(image, "png", outputStream);
+                    inputStream = new ByteArrayInputStream(outputStream.toByteArray());
+                    length = inputStream.available();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            stmt.setBinaryStream(3, inputStream, length);
             ResultSet rs = stmt.executeQuery();
+
             if(rs.next()) {
-                return new User(rs.getInt("ID"), email, password, User.USER_ROLE);
+                return new User(rs.getInt("ID"), email, password, User.USER_ROLE, image);
             }
         } catch (SQLException e) {
             e.printStackTrace();

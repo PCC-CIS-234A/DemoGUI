@@ -3,21 +3,25 @@ package demogui.logic;
 import demogui.database.Database;
 import demogui.main.Main;
 
+import java.awt.image.BufferedImage;
+
 public class User {
     private int mUserID;
     private String mEmail;
     private String mPassword;
     private String mRole;
+    private BufferedImage mImage;
 
     public static final String ADMIN_ROLE = "Admin";
     public static final String THERAPIST_ROLE = "Therapist";
-    public static final String USER_ROLE = "demogui.logic.User";
+    public static final String USER_ROLE = "User";
 
-    public User(int userID, String email, String password, String role) {
+    public User(int userID, String email, String password, String role, BufferedImage image) {
         mUserID = userID;
         mEmail = email;
         mPassword = password;
         mRole = role;
+        mImage = image;
     }
 
     public static void login(String em, String pwd) {
@@ -41,7 +45,7 @@ public class User {
         }
     }
 
-    public static User register(String email, String password, String passwordConfirm) {
+    public static User register(String email, String password, String passwordConfirm, BufferedImage image) {
         if(!password.equals(passwordConfirm)) {
             System.out.println("Password not equal confirm password. Alert dialog goes here.");
             return null;
@@ -55,7 +59,7 @@ public class User {
             return null;
         }
 
-        user = db.registerUser(email, password);
+        user = db.registerUser(email, password, image);
         db.close();
         return user;
     }
@@ -74,5 +78,9 @@ public class User {
 
     public String getRole() {
         return mRole;
+    }
+
+    public BufferedImage getImage() {
+        return mImage;
     }
 }

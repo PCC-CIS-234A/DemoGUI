@@ -27,7 +27,7 @@ public class LoginForm {
         });
 
         newAccountButton.addActionListener(actionEvent -> {
-            Main.setUser(new User(-1, emailTextField.getText(), passwordTextField.getText(), ""));
+            Main.setUser(new User(-1, emailTextField.getText(), passwordTextField.getText(), "", null));
             Main.showRegister();
         });
     }

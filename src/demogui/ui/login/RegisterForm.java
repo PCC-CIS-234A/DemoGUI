@@ -2,6 +2,7 @@ package demogui.ui.login;
 
 import demogui.logic.User;
 import demogui.main.Main;
+import demogui.ui.DroppablePicturePanel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -17,6 +18,7 @@ public class RegisterForm {
     JButton registerButton;
     JTextField passwordTextField;
     private JPasswordField passwordConfirmField;
+    private DroppablePicturePanel picturePanel;
 
     public RegisterForm(User user) {
         String email = user.getEmail();
@@ -31,7 +33,8 @@ public class RegisterForm {
                 User user = User.register(
                         emailTextField.getText(),
                         passwordTextField.getText(),
-                        passwordConfirmField.getText()
+                        passwordConfirmField.getText(),
+                        picturePanel.getImage()
                 );
                 // some logic to verify that the user is the legitimate user.
                 if(user != null) {
@@ -45,7 +48,7 @@ public class RegisterForm {
         loginExistingButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                Main.setUser(new User(-1, emailTextField.getText(), passwordTextField.getText(), ""));
+                Main.setUser(new User(-1, emailTextField.getText(), passwordTextField.getText(), "", null));
                 Main.showLogin();
             }
         });

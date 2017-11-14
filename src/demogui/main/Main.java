@@ -15,7 +15,7 @@ import static javax.swing.SwingUtilities.invokeLater;
 // import javax.swing.*;
 
 public class Main {
-    private static User mUser = new User(-1, "", "", "");
+    private static User mUser = new User(-1, "", "", "", null);
     private static JFrame mFrame = null;
 
     public static void createGUI() {
@@ -42,7 +42,7 @@ public class Main {
 
     public static void showStub() {
         mFrame.getContentPane().removeAll();
-        mFrame.getContentPane().add(new StubForm().getRootPanel());
+        mFrame.getContentPane().add(new StubForm(mUser).getRootPanel());
         mFrame.pack();
         mFrame.setLocationRelativeTo(null);
         mFrame.setVisible(true);
