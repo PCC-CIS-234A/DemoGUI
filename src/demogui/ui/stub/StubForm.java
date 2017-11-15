@@ -34,18 +34,8 @@ public class StubForm {
             e.printStackTrace();
         }
 
-        picturePanel1.setCallback(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("Clicked panel 1");
-            }
-        });
-        picturePanel2.setCallback(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("Clicked Trump");
-            }
-        });
+        picturePanel1.setCallback(() -> System.out.println("Clicked panel 1"));
+        picturePanel2.setCallback(() -> System.out.println("Clicked Trump"));
         startOverButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
