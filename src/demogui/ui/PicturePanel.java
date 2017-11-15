@@ -16,14 +16,15 @@ import java.util.function.Function;
 
 public class PicturePanel extends JPanel {
     private BufferedImage image = null;
-    private Runnable callback;
+    private Runnable callback = null;
 
     public PicturePanel() {
         super();
         addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                callback.run();
+                if (callback != null)
+                    callback.run();
             }
 
             @Override
