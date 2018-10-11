@@ -1,9 +1,9 @@
-package demogui.main;
+package main;
 
-import demogui.logic.User;
-import demogui.ui.login.LoginForm;
-import demogui.ui.login.RegisterForm;
-import demogui.ui.stub.StubForm;
+import logic.User;
+import demogui.login.LoginForm;
+import demogui.login.RegisterForm;
+import demogui.stub.StubForm;
 
 import javax.swing.*;
 

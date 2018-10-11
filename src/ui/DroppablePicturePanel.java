@@ -1,4 +1,4 @@
-package demogui.ui;
+package ui;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

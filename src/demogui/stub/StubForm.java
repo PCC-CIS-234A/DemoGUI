@@ -1,8 +1,7 @@
-package demogui.ui.stub;
+package demogui.stub;
 
-import demogui.logic.User;
-import demogui.main.Main;
-import demogui.ui.DroppablePicturePanel;
+import logic.User;
+import main.Main;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -14,7 +13,7 @@ import java.awt.event.ActionListener;
 public class StubForm {
     private JButton startOverButton;
     private JPanel rootPanel;
-    private demogui.ui.PicturePanel picturePanel;
+    private ui.PicturePanel picturePanel;
 
 
     public JPanel getRootPanel() {

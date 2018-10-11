@@ -1,7 +1,7 @@
-package demogui.logic;
+package logic;
 
-import demogui.database.Database;
-import demogui.main.Main;
+import database.Database;
+import main.Main;
 
 import java.awt.image.BufferedImage;
 
@@ -32,12 +32,12 @@ public class User {
         db.close();
 
         if(user == null) {
-            System.out.println("demogui.logic.User not found, need an error dialog.");
+            System.out.println("logic.User not found, need an error dialog.");
             return;
         }
         System.out.println("ID: " + user.getUserID() + ", Email: " + user.getEmail() + ", Password: " + user.getPassword() + ", Role: " + user.getRole());
         if(user.getPassword().equals(pwd)) {
-            System.out.println("demogui.logic.User " + user.getUserID() + " logged in successfully.");
+            System.out.println("logic.User " + user.getUserID() + " logged in successfully.");
             Main.setUser(user);
             Main.login();
         } else {
@@ -55,7 +55,7 @@ public class User {
         User user = db.lookupUser(email);
 
         if(user != null) {
-            System.out.println("demogui.logic.User already exists! Alert goes here.");
+            System.out.println("logic.User already exists! Alert goes here.");
             return null;
         }
 

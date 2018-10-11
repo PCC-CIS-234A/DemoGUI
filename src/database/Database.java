@@ -1,6 +1,6 @@
-package demogui.database;
+package database;
 
-import demogui.logic.User;
+import logic.User;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

@@ -1,7 +1,7 @@
-package demogui.ui.login;
+package demogui.login;
 
-import demogui.logic.User;
-import demogui.main.Main;
+import logic.User;
+import main.Main;
 
 import javax.swing.*;
 
