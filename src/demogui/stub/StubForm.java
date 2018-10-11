@@ -1,7 +1,7 @@
 package demogui.stub;
 
 import logic.User;
-import Main;
+import main.Main;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

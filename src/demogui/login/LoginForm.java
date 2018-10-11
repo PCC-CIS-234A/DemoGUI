@@ -1,10 +1,9 @@
 package demogui.login;
 
 import logic.User;
-import Main;
 
 import javax.swing.*;
-
+import main.Main;
 /**
  * Created by SYTC307u8365 on 10/5/2017.
  */

@@ -1,3 +1,5 @@
+package main;
+
 import logic.User;
 import demogui.login.LoginForm;
 import demogui.login.RegisterForm;

@@ -1,7 +1,7 @@
 package logic;
 
 import database.Database;
-import Main;
+import main.Main;
 
 import java.awt.image.BufferedImage;
 

@@ -1,7 +1,7 @@
 package demogui.login;
 
 import logic.User;
-import Main;
+import main.Main;
 import ui.DroppablePicturePanel;
 
 import javax.swing.*;
