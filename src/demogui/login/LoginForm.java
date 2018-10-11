@@ -1,7 +1,7 @@
 package demogui.login;
 
 import logic.User;
-import main.Main;
+import Main;
 
 import javax.swing.*;
 
