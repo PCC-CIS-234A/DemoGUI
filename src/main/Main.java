@@ -1,5 +1,6 @@
 package main;
 
+import demogui.bigPicture.BigPicture;
 import logic.User;
 import demogui.login.LoginForm;
 import demogui.login.RegisterForm;
@@ -46,6 +47,15 @@ public class Main {
         mFrame.pack();
         mFrame.setLocationRelativeTo(null);
         mFrame.setVisible(true);
+    }
+
+    public static void showBigPicture() {
+        JFrame frame = new JFrame("The Big Picture");
+        frame.getContentPane().removeAll();
+        frame.getContentPane().add(new BigPicture(mUser).getRootPanel());
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
     }
 
     public static void setUser(User user) {

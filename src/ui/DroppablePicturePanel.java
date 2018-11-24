@@ -7,19 +7,29 @@ import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.dnd.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
-public class DroppablePicturePanel extends JPanel implements DropTargetListener {
+public class DroppablePicturePanel extends JPanel implements DropTargetListener, MouseListener {
     private final static String DROP_TEXT = "Drop Image Here";
     private DropTarget target;
     private boolean dragging = false;
     private BufferedImage image = null;
+    private ArrayList<PictureChangedListener> mPictureChangedListeners;
+    private ArrayList<ActionListener> mClickListeners;
 
     public DroppablePicturePanel() {
         super();
         target = new DropTarget(this, this);
+        mPictureChangedListeners = new ArrayList<>();
+        mClickListeners = new ArrayList<>();
+        addMouseListener(this);
     }
 
     public void setImage(BufferedImage value) {
@@ -82,9 +92,16 @@ public class DroppablePicturePanel extends JPanel implements DropTargetListener 
         repaint();
     }
 
+    private  void notifyPictureChangedListeners() {
+        for (PictureChangedListener listener : mPictureChangedListeners) {
+            listener.pictureChanged(this, image);
+        }
+    }
+
     private void loadFile(File file) {
         try {
             image = ImageIO.read(file);
+            notifyPictureChangedListeners();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -119,5 +136,53 @@ public class DroppablePicturePanel extends JPanel implements DropTargetListener 
             }
         }
         repaint();
+    }
+
+    public void addPictureChangedListener(PictureChangedListener listener) {
+        mPictureChangedListeners.add(listener);
+    }
+    public void addActionListener(ActionListener listener) {
+        mClickListeners.add(listener);
+    }
+
+    private void notifyClickListeners(MouseEvent evt) {
+        ActionEvent e = new ActionEvent(
+                evt.getSource(),
+                ActionEvent.ACTION_PERFORMED,
+                "Click",
+                evt.getWhen(),
+                evt.getModifiers());
+        for (ActionListener listener : mClickListeners) {
+            listener.actionPerformed(e);
+        }
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        notifyClickListeners(e);
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
+
+    public interface PictureChangedListener {
+        void pictureChanged(DroppablePicturePanel droppablePicturePanel, BufferedImage image);
     }
 }

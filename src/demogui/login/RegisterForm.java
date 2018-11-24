@@ -4,14 +4,18 @@ import logic.User;
 import main.Main;
 import ui.DroppablePicturePanel;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Created by SYTC307u8365 on 10/5/2017.
  */
-public class RegisterForm {
+public class RegisterForm implements DroppablePicturePanel.PictureChangedListener {
     JPanel rootPanel;
     JTextField emailTextField;
     JButton loginExistingButton;
@@ -19,6 +23,7 @@ public class RegisterForm {
     JTextField passwordTextField;
     private JPasswordField passwordConfirmField;
     private DroppablePicturePanel picturePanel;
+    private BufferedImage image = null;
 
     public RegisterForm(User user) {
         String email = user.getEmail();
@@ -27,6 +32,15 @@ public class RegisterForm {
         emailTextField.setText(email);
         passwordTextField.setText(password);
 
+        picturePanel.addPictureChangedListener(this);
+
+        picturePanel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Clicked droppable picture panel.");
+                chooseImageFile();
+            }
+        });
         registerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -34,7 +48,7 @@ public class RegisterForm {
                         emailTextField.getText(),
                         passwordTextField.getText(),
                         passwordConfirmField.getText(),
-                        picturePanel.getImage()
+                        image
                 );
                 // some logic to verify that the user is the legitimate user.
                 if(user != null) {
@@ -54,7 +68,28 @@ public class RegisterForm {
         });
     }
 
+    private void chooseImageFile() {
+        JFileChooser chooser = new JFileChooser();
+        int returnValue = chooser.showOpenDialog(null);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            System.out.println("Chose file " + chooser.getSelectedFile());
+            try {
+                image = ImageIO.read(chooser.getSelectedFile());
+                picturePanel.setImage(image);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public JPanel getRootPanel() {
         return rootPanel;
+    }
+
+    @Override
+    public void pictureChanged(DroppablePicturePanel droppablePicturePanel, BufferedImage img) {
+        // Got a new image, let's remember it for later.
+        image = img;
+        System.out.println("Got picture " + image);
     }
 }

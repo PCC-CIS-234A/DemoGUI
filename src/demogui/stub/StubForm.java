@@ -23,6 +23,13 @@ public class StubForm {
     public StubForm(User user) {
         picturePanel.setImage(user.getImage());
 
+        picturePanel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                Main.setUser(user);
+                Main.showBigPicture();
+            }
+        });
         startOverButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
