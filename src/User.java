@@ -1,3 +1,5 @@
+// A comment
+
 public class User {
     private int mUserID;
     private String mEmail;

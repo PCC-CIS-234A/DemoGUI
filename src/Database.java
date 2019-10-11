@@ -1,5 +1,6 @@
 import java.sql.*;
 
+// This is a change 
 public class Database {
     private static final String SERVER = "cisdbss.pcc.edu";
     private static final String DATABASE = "DemoGUI";
